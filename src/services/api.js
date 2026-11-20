@@ -54,3 +54,12 @@ export async function atualizarPonto(id, ponto) {
   return await resposta.json();
 }
 
+export async function excluirPonto(id) {
+  const resposta = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!resposta.ok) {
+    throw new Error("Erro ao excluir o ponto.");
+  }
+}

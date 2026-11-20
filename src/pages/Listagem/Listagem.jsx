@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { buscarPontos } from "../../services/api";
+import { buscarPontos, excluirPonto } from "../../services/api";
 
 function Listagem() {
   const [pontos, setPontos] = useState([]);
@@ -17,6 +17,28 @@ function Listagem() {
 
     carregarPontos();
   }, []);
+  async function handleExcluir(id) {
+    const confirmar = window.confirm(
+      "Tem certeza que deseja excluir este ponto?"
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
+    try {
+      await excluirPonto(id);
+
+      alert("Ponto excluído com sucesso!");
+
+      const dados = await buscarPontos();
+      setPontos(dados);
+
+    } catch (erro) {
+      console.error("Erro ao excluir ponto:", erro);
+      alert("Não foi possível excluir o ponto.");
+  }
+}
 
   return (
     <div>
@@ -40,6 +62,9 @@ function Listagem() {
             <Link to={`/pontos/${ponto.id}/editar`}>
               Editar
             </Link>
+            <button onClick={() => handleExcluir(ponto.id)}>
+              Excluir
+            </button>
           </div>
         ))
       )}
