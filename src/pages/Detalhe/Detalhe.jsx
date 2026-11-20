@@ -34,5 +34,5 @@ if (ponto === null) {
     <p>Longitude: {ponto.longitude}</p>
   </div>
 );
-
+}
 export default Detalhe;
