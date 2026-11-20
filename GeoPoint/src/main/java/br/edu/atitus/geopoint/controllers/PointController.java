@@ -6,7 +6,9 @@ import br.edu.atitus.geopoint.services.PointService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/points")
@@ -45,5 +47,19 @@ public class PointController {
         return ResponseEntity
                 .status(500)
                 .body("Erro interno do servidor.");
+    }
+    @GetMapping
+    public ResponseEntity<List<PointEntity>> findAll() {
+        List<PointEntity> response = service.findAll();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PointEntity> findById(@PathVariable UUID id) {
+
+        PointEntity response = service.findById(id);
+
+        return ResponseEntity.ok(response);
     }
 }
