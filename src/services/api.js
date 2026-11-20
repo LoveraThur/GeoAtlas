@@ -37,3 +37,20 @@ export async function buscarPontoPorId(id) {
 
   return dados;
 }
+
+export async function atualizarPonto(id, ponto) {
+  const resposta = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(ponto),
+  });
+
+  if (!resposta.ok) {
+    throw new Error("Erro ao atualizar o ponto.");
+  }
+
+  return await resposta.json();
+}
+

@@ -1,12 +1,44 @@
 import "./Cadastro.css";
-import { useState } from "react";
-import { cadastrarPonto } from "../../services/api";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  cadastrarPonto,
+  buscarPontoPorId,
+  atualizarPonto,
+} from "../../services/api";
 
 function Cadastro() {
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const modoEdicao = Boolean(id);
+
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+
+useEffect(() => {
+  if (modoEdicao) {
+    async function carregarPonto() {
+      try {
+        const dados = await buscarPontoPorId(id);
+
+        setNome(dados.name);
+        setDescricao(dados.description || "");
+        setLatitude(String(dados.latitude));
+        setLongitude(String(dados.longitude));
+
+      } catch (erro) {
+        console.error("Erro ao carregar ponto:", erro);
+        alert("Não foi possível carregar o ponto.");
+      }
+    }
+
+    carregarPonto();
+  }
+}, [id, modoEdicao]);
 
   function handleLatitudeChange(event) {
     const valor = event.target.value;
@@ -46,24 +78,26 @@ function Cadastro() {
   };
 
   try {
-    await cadastrarPonto(ponto);
+    if (modoEdicao) {
+      await atualizarPonto(id, ponto);
+      alert("Ponto atualizado com sucesso!");
+    } else {
+      await cadastrarPonto(ponto);
+      alert("Ponto cadastrado com sucesso!");
+    }
 
-    alert("Ponto cadastrado com sucesso!");
-
-    setNome("");
-    setDescricao("");
-    setLatitude("");
-    setLongitude("");
+    navigate("/pontos");
 
   } catch (erro) {
-    console.error("Erro ao cadastrar ponto:", erro);
-    alert("Não foi possível cadastrar o ponto.");
+    console.error("Erro ao salvar ponto:", erro);
+    alert("Não foi possível salvar o ponto.");
   }
 }
 
+
     return (
       <div>
-        <h1>Cadastrar Localização</h1>
+        <h1>{modoEdicao ? "Editar Localização" : "Cadastrar Localização"}</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="campo campo-nome">
@@ -125,7 +159,7 @@ function Cadastro() {
 
           <div className="container-botao-cadastrar">
             <button className="botao-cadastrar" type="submit">
-              Cadastrar Ponto
+              {modoEdicao ? "Salvar Alterações" : "Cadastrar Ponto"}
             </button>
           </div>
         </form >
