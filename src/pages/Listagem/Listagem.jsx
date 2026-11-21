@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { buscarPontos, excluirPonto } from "../../services/api";
+import "./Listagem.css";
 
 function Listagem() {
   const [pontos, setPontos] = useState([]);
@@ -41,35 +42,50 @@ function Listagem() {
 }
 
   return (
-    <div>
-      <h1>Lista de Pontos Geográficos</h1>
+  <main className="pagina-listagem">
+    <header className="cabecalho-listagem">
+      <h1>GeoPoint</h1>
+      <p>Meus pontos cadastrados</p>
+    </header>
+
+    <section className="conteudo-listagem">
+      <h2>Meus pontos</h2>
 
       {pontos.length === 0 ? (
-        <p>Nenhum ponto cadastrado.</p>
+        <p className="mensagem-vazia">
+          Nenhum ponto cadastrado.
+        </p>
       ) : (
-        pontos.map((ponto) => (
-          <div key={ponto.id}>
-            <h2>{ponto.name}</h2>
+        <section className="lista-pontos">
+          {pontos.map((ponto) => (
+            <article className="cartao-ponto" key={ponto.id}>
+              <h3>{ponto.name}</h3>
 
-            <p>{ponto.description}</p>
-            <p>Latitude: {ponto.latitude}</p>
-            <p>Longitude: {ponto.longitude}</p>
+              <p>{ponto.description}</p>
+              <p>Latitude: {ponto.latitude}</p>
+              <p>Longitude: {ponto.longitude}</p>
 
-            <Link to={`/pontos/${ponto.id}`}>
-              Ver detalhes
-            </Link>
+              <nav className="acoes-ponto">
+                <Link to={`/pontos/${ponto.id}`}>
+                  Ver detalhes
+                </Link>
 
-            <Link to={`/pontos/${ponto.id}/editar`}>
-              Editar
-            </Link>
-            <button onClick={() => handleExcluir(ponto.id)}>
-              Excluir
-            </button>
-          </div>
-        ))
+                <Link to={`/pontos/${ponto.id}/editar`}>
+                  Editar
+                </Link>
+
+                <button onClick={() => handleExcluir(ponto.id)}>
+                  Excluir
+                </button>
+              </nav>
+            </article>
+          ))}
+        </section>
       )}
-    </div>
-  );
+    </section>
+  </main>
+);
+
 }
 
 export default Listagem;

@@ -1,0 +1,99 @@
+
+.pagina-listagem {
+  min-height: 100vh;
+  background-color: #f4f5f1;
+}
+
+/* Cabeçalho */
+
+.cabecalho-listagem {
+  background-color: #397d43;
+  color: white;
+  padding: 30px 40px;
+}
+
+.cabecalho-listagem h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.cabecalho-listagem p {
+  margin: 8px 0 0;
+  font-size: 16px;
+}
+
+/* Conteúdo */
+
+.conteudo-listagem {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 25px;
+}
+
+.conteudo-listagem h2 {
+  font-size: 24px;
+  color: #263b2b;
+  margin-bottom: 20px;
+}
+
+/* Lista de pontos */
+
+.lista-pontos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Cartões */
+
+.cartao-ponto {
+  background-color: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.informacoes-ponto h3 {
+  margin: 0 0 10px;
+  color: #315f39;
+  font-size: 20px;
+}
+
+.informacoes-ponto p {
+  margin: 6px 0;
+  color: #555;
+}
+
+/* Ações */
+
+.acoes-ponto {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.acoes-ponto a,
+.acoes-ponto button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 7px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.acoes-ponto a {
+  background-color: #397d43;
+  color: white;
+}
+
+.acoes-ponto button {
+  background-color: #d9534f;
+  color: white;
+}
+
+.mensagem-vazia {
+  color: #666;
+  font-size: 16px;
+}
