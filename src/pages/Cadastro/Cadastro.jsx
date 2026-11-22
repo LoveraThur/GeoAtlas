@@ -95,76 +95,81 @@ useEffect(() => {
 }
 
 
-    return (
-      <div>
-        <h1>{modoEdicao ? "Editar Localização" : "Cadastrar Localização"}</h1>
+    
+return (
+  <main className="pagina-cadastro">
+    <header className="cabecalho-cadastro">
+      <h1>
+        {modoEdicao ? "Editar localização" : "Cadastrar localização"}
+      </h1>
+      <p>Preencha os dados do ponto geográfico</p>
+    </header>
 
-        <form onSubmit={handleSubmit}>
-          <div className="campo campo-nome">
-            <label htmlFor="nome">Nome da Localização:</label>
+    <form className="formulario-cadastro" onSubmit={handleSubmit}>
+      <section className="campo">
+        <label htmlFor="nome">Nome da localização</label>
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          placeholder="Digite o nome da localização"
+          maxLength={100}
+          value={nome}
+          onChange={(event) => setNome(event.target.value)}
+          required
+        />
+      </section>
 
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              placeholder="Digite o nome da Localização"
-              maxLength={35}
-              value={nome}
-              onChange={(event) => setNome(event.target.value)}
-              required
-            />
-          </div>
-          <div className="campo campo-descricao">
-            <label htmlFor="descricao">Descrição</label>
+      <section className="campo">
+        <label htmlFor="descricao">Descrição</label>
+        <input
+          type="text"
+          id="descricao"
+          name="descricao"
+          placeholder="Descrição da localização"
+          maxLength={255}
+          value={descricao}
+          onChange={(event) => setDescricao(event.target.value)}
+        />
+      </section>
 
-            <input
-              type="text"
-              id="descricao"
-              name="descricao"
-              placeholder="Descrição da Localização"
-              maxLength={150}
-              value={descricao}
-              onChange={(event) => setDescricao(event.target.value)}
-            />
-          </div>
-          <div className="campo campo-latitude">
-            <label htmlFor="descricao">Latitude</label>
+      <section className="campos-coordenadas">
+        <div className="campo">
+          <label htmlFor="latitude">Latitude</label>
+          <input
+            type="text"
+            inputMode="decimal"
+            id="latitude"
+            name="latitude"
+            placeholder="-90 a 90"
+            value={latitude}
+            onChange={handleLatitudeChange}
+            required
+          />
+        </div>
 
-            <input
-              type="text"
-              inputMode="decimal"
-              id="latitude"
-              name="latitude"
-              placeholder="Latitude"
-              value={latitude}
-              onChange={handleLatitudeChange}
-              required
-            />
-          </div>
+        <div className="campo">
+          <label htmlFor="longitude">Longitude</label>
+          <input
+            type="text"
+            inputMode="decimal"
+            id="longitude"
+            name="longitude"
+            placeholder="-180 a 180"
+            value={longitude}
+            onChange={handleLongitudeChange}
+            required
+          />
+        </div>
+      </section>
 
-          <div className="campo campo-longitude">
-            <label htmlFor="longitude">Longitude:</label>
+      <button className="botao-cadastrar" type="submit">
+        {modoEdicao ? "Salvar alterações" : "Cadastrar ponto"}
+      </button>
+    </form>
+  </main>
+);
 
-            <input
-              type="text"
-              inputMode="decimal"
-              id="longitude"
-              name="longitude"
-              placeholder="Longitude"
-              value={longitude}
-              onChange={handleLongitudeChange}
-              required
-            />
-          </div>
-
-          <div className="container-botao-cadastrar">
-            <button className="botao-cadastrar" type="submit">
-              {modoEdicao ? "Salvar Alterações" : "Cadastrar Ponto"}
-            </button>
-          </div>
-        </form >
-      </div>
-    );
   }
 
 export default Cadastro;
