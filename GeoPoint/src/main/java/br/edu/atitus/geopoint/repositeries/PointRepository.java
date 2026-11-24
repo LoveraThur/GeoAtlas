@@ -39,6 +39,31 @@ public class PointRepository {
 
         return point;
     }
+
+    public PointEntity change(PointEntity point) {
+
+        String sql = """
+        
+                UPDATE points
+        SET
+            name = ?,
+            description = ?,
+            latitude = ?,
+            longitude = ?
+        WHERE id = ?
+        """;
+
+        jdbcTemplate.update(
+                sql,
+                point.getName(),
+                point.getDescription(),
+                point.getLatitude(),
+                point.getLongitude(),
+                point.getId()
+        );
+
+        return point;
+    }
     private final RowMapper<PointEntity> rowMapper = (rs, rowNum) -> {
         PointEntity point = new PointEntity();
 

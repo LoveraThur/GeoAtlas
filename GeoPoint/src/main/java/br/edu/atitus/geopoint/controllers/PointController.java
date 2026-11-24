@@ -28,6 +28,14 @@ public class PointController {
         return ResponseEntity.status(201).body(point);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<PointEntity> changePoint(
+            @PathVariable UUID id,
+            @RequestBody PointRequest pointRequest){
+        PointEntity point = service.change(id, pointRequest);
+        return ResponseEntity.ok(point);
+    }
+
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handleRuntimeException(NoSuchElementException exception) {
         return ResponseEntity
