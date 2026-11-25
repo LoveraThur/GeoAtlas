@@ -44,7 +44,7 @@ public class PointRepository {
 
         String sql = """
         
-                UPDATE points
+        UPDATE points
         SET
             name = ?,
             description = ?,
@@ -63,6 +63,15 @@ public class PointRepository {
         );
 
         return point;
+    }
+    public int delete(UUID id) {
+
+        String sql = """
+        DELETE FROM points
+        WHERE id = ?
+        """;
+
+        return jdbcTemplate.update(sql, id);
     }
     private final RowMapper<PointEntity> rowMapper = (rs, rowNum) -> {
         PointEntity point = new PointEntity();

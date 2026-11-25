@@ -36,6 +36,15 @@ public class PointController {
         return ResponseEntity.ok(point);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePoint(
+            @PathVariable UUID id) {
+
+        service.delete(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handleRuntimeException(NoSuchElementException exception) {
         return ResponseEntity
