@@ -1,16 +1,51 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# GeoPoint
 
-Currently, two official plugins are available:
+Aplicação web desenvolvida em React para gerenciamento de pontos geográficos, consumindo uma API REST.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades
 
-## React Compiler
+- Cadastrar pontos geográficos.
+- Listar pontos cadastrados.
+- Visualizar detalhes de um ponto.
+- Editar pontos existentes.
+- Excluir pontos.
+- Pesquisar pontos pelo nome.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologias utilizadas
 
-## Expanding the ESLint configuration
+- React
+- JavaScript
+- React Router
+- CSS
+- Fetch API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Requisitos
+
+- Node.js instalado.
+- API GeoPoint em execução.
+
+## Como executar o projeto
+
+1. Clone ou baixe este repositório.
+2. Abra o terminal na pasta do projeto.
+3. Instale as dependências:
+
+   npm install
+
+4. Inicie a aplicação:
+
+   npm run dev
+
+5. Acesse o endereço apresentado no terminal.
+
+## API
+
+A aplicação consome a API GeoPoint, desenvolvida na aula de Organização e Abstração de Objetos com o professor Luciano.
+
+URL base:
+https://geoatlas-nqtx.onrender.com
+
+Certifique-se de que a API esteja em execução antes de utilizar a aplicação.
+
+![alt text](image.png)

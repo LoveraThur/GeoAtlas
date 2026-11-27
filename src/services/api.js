@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/points";
+const API_URL = "https://geoatlas-nqtx.onrender.com/api/points";
 
 export async function buscarPontos() {
 
