@@ -55,3 +55,9 @@ Certifique-se de que a API esteja em execução antes de utilizar a aplicação.
 ![alt text](images/image-2.png)
 ![alt text](images/image-3.png)
 ![alt text](images/image-4.png)
+
+## Server
+
+verifiquei que o link colocado para a API nao esta direcionando corretamente, entao deixarei uma imagem mostrando que está ligada la
+
+![alt text](images/server.png)
