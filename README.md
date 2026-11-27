@@ -44,7 +44,7 @@ Aplicação web desenvolvida em React para gerenciamento de pontos geográficos,
 A aplicação consome a API GeoPoint, desenvolvida na aula de Organização e Abstração de Objetos com o professor Luciano.
 
 URL base:
-https://geoatlas-nqtx.onrender.com
+https://geoatlas-nqtx.onrender.com/api/points
 
 Certifique-se de que a API esteja em execução antes de utilizar a aplicação.
 
